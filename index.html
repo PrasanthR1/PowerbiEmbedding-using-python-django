@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Powerbi Example</title>
+</head>
+<body>
+<div id="reportContainer">
+    <script type="text/javascript">
+        var models = window['powerbi-client'].models;
+
+        var json_data = {{json_data | safe }}
+        var embedConfiguration = {
+               id: json_data[0].reportId,
+               type: 'report',
+               embedUrl: 'https://app.powerbi.com/reportEmbed',
+               tokenType: models.TokenType.Embed,
+               accessToken: json_data[0].embedToken,
+               settings: {
+                           navContentPaneEnabled: false
+                         }
+               };
+
+               var element = document.getElementById('reportContainer');
+               var report = powerbi.embed(element, embedConfiguration);
+    </script>
+</div>
+</body>
+</html>
