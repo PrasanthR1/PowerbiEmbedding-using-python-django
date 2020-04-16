@@ -1,8 +1,7 @@
 <-- THIS DOCUMENT EXPLAINS HOW TO EMBED REPORTS USING POWERBI REST API -->
 
 -> First thing you need to Register your application on `https://app.powerbi.com/embedsetup/appownsdata`
--> Need js sdk -> powebi.js file to render your report,you can get it from here `https://github.com/microsoft/PowerBI-JavaScript/tree/master/dist`
-add it to your project
+-> Need js sdk -> powebi.js file to render your report,you can get it from here `https://github.com/microsoft/PowerBIJavaScript/tree/master/dist` add it to your project
 -> To access rest_api and your workspace, you need to get access_token and exchange it for authorization code.
 
 To get access_token use post url and payload for the url :-
@@ -15,6 +14,7 @@ payload = {
     'username': '{your powerbi acc}',
     'password': '{powerbi acc password}'  
 }
+
 POST URL : 'https://login.microsoftonline.com/common/oauth2/token',data=payload
 result -> you will get access_token
 
@@ -36,13 +36,16 @@ result -> you will get all the reports
 Note : 'Value' is name of the report
 
 Now get embedUrl and reportId from reports
+
 post_data = post_data = \
         """
             {
                 "accessLevel": "View"
             }
         """
+        
 headers.update({'Content-type': 'application/json'})
+
 POST URL : ('https://api.powerbi.com/v1.0/myorg/groups/' + group_id + \
             '/reports/' + reportId + '/GenerateToken',data = post_data, headers=headers)
 
@@ -76,8 +79,10 @@ I'm rendering multiple reports,that's why i have [{report1},{report2}],so i used
  </script>
 
 Tips : If you want to embed multiple report and show when button is clicked,this example is so helpful for you.
+
 <button type="button" onclick="getreport(0)" class="btn btn-primary">report1</button>
 where getreport 0-> is the 1st report likewise you can access all your reports.
+
 <script type="text/javascript">
            function getreport(key) {
                     var models = window['powerbi-client'].models;
