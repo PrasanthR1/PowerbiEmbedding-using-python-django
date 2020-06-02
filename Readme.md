@@ -8,12 +8,12 @@
 
 `payload = {
            'grant_type': 'password',
-           'scope': 'openid',
-           'resource': r`https://analysis.windows.net/powerbi/api`,
+           'scope': 'openid'
+           'resource': r'https://analysis.windows.net/powerbi/api',
            'client_id': '{client id from auzre reg app}',
            'username': '{your powerbi acc}',
            'password': '{powerbi acc password}
-           }`
+ }`
            
           
 #### POST URL : 'https://login.microsoftonline.com/common/oauth2/token',data=payload
