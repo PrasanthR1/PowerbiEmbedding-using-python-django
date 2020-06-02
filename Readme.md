@@ -60,7 +60,7 @@ send it as context to html and use it in javascript code I'm rendering multiple 
                            var json_data = {{json_data | safe }}
                            var embedConfiguration = {
                                id: json_data[0].reportId,
-                       ``        type: 'report',
+                               type: 'report',
                                embedUrl: 'https://app.powerbi.com/reportEmbed',
                                tokenType: models.TokenType.Embed,
                                accessToken: json_data[0].embedToken,
@@ -85,7 +85,7 @@ where getreport 0-> is the 1st report likewise you can access all your reports.
                            var json_data = {{json_data | safe }}
                            var embedConfiguration = {
                                id: json_data[key].reportId,
-                       ``        type: 'report',
+                               type: 'report',
                                embedUrl: 'https://app.powerbi.com/reportEmbed',
                                tokenType: models.TokenType.Embed,
                                accessToken: json_data[0].embedToken,
