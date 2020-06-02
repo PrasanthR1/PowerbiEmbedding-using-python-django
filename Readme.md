@@ -74,7 +74,8 @@ send it as context to html and use it in javascript code I'm rendering multiple 
       </script>`
 > Tips : If you want to embed multiple report and show when button is clicked,this example is so helpful for you.
 
-<button type="button" onclick="getreport(0)" class="btn btn-primary">report1</button>
+
+`<button type="button" onclick="getreport(0)" class="btn btn-primary">report1</button>`
 
 where getreport 0-> is the 1st report likewise you can access all your reports.
 
