@@ -6,16 +6,19 @@
 
 ## To get access_token use post url and payload for the url :-
 
-payload = {
+`payload = {
            'grant_type': 'password',
            'scope': 'openid',
            'resource': r`https://analysis.windows.net/powerbi/api`,
            'client_id': '{client id from auzre reg app}',
            'username': '{your powerbi acc}',
-           'password': '{powerbi acc password}}
-POST URL : 'https://login.microsoftonline.com/common/oauth2/token',data=payload
+           'password': '{powerbi acc password}
+           }`
+           
+          
+#### POST URL : 'https://login.microsoftonline.com/common/oauth2/token',data=payload
 
-### result -> you will get access_token
+result -> you will get access_token
 
 ## After getting access_token use it as with Bearer to get Authorization
 
@@ -23,7 +26,7 @@ headers = { 'Authorization' : 'Bearer ' + access_token }
 
 #### GET URL : 'https://api.powerbi.com/v1.0/myorg/groups',headers=headers
 
-### result -> you will get workspaces Note : 'value' is the name of the workspace
+result -> you will get workspaces Note : 'value' is the name of the workspace
 
 ##### choose the workspace which you want use (Note:put all the reports in one workspace to embed multiple reports from one ws) If you didn't provide any workspace name it will take 1st workspace as default After selecting the workspace -> get group id from that particular workspace.
 
@@ -31,19 +34,21 @@ headers = { 'Authorization' : 'Bearer ' + access_token }
 
 #### GET URL : https://api.powerbi.com/v1.0/myorg/groups/' + group_id + '/reports',headers=headers
 
-### result -> you will get all the reports Note : 'Value' is name of the report
+result -> you will get all the reports Note : 'Value' is name of the report
 
 ## Now get embedUrl and reportId from reports
 
-post_data = post_data =
-""" { "accessLevel": "View" } """
+`post_data = post_data =
+""" 
+{ "accessLevel": "View" }
+"""`
 
 headers.update({'Content-type': 'application/json'})
 
 #### POST URL : ('https://api.powerbi.com/v1.0/myorg/groups/' + group_id +
 '/reports/' + reportId + '/GenerateToken',data = post_data, headers=headers)
 
-### result -> you will get embed_token
+result -> you will get embed_token
 
 ## Fianlly you have :- json_data = { 'embedToken' : {}, 'embedUrl' : {}, 'reportId' : {} }
 
